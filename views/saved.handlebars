@@ -1,0 +1,23 @@
+<h1>Saved Articles: <span><a href="/">view unsaved articles</a> | <a href="api/articles/all">articles json</a></span></h1>
+<ul class="saved">
+    {{#each articles}}
+    <li data-article-id="_id">
+        <div><a href={{link}} target="_blank">{{title}}</a></div>
+        {{if note}}
+        <div class="note" data-note-id={{note._id}}>Notes: {{note.text}}</div>
+        <button class="editNote">Edit Note</button>
+        <form class="editForm">
+            <input class="text" placeholder="Your note here">
+            <button type="submit">Submit Note</button>
+        </form>
+        {{/if}}
+        {{#unless note}}
+        <button class="addNote">Add Note</button>
+        <form class="addForm">
+            <input class="text" placeholder="Your note here">
+            <button type="submit">Submit Note</button>
+        </form>
+        {{/unless}}
+    </li>
+    {{/each}}
+</ul>
