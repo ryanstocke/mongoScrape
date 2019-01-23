@@ -6,10 +6,24 @@ var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new NoteSchema object
 // This is similar to a Sequelize model
 var NoteSchema = new Schema({
-  // `title` is of type String
-  title: String,
-  // `body` is of type String
-  body: String
+    // `title` is of type String
+    title: {
+        type: String,
+        required: false
+    },
+    // `body` is of type String
+    body: {
+        type: String
+    },
+
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    article: {
+        type: Schema.Types.ObjectId,
+        ref: "Article"
+    }
 });
 
 // This creates our model from the above schema, using mongoose's model method - "Note" then gets pluralized and switched to lower case. see 'notes' in the db

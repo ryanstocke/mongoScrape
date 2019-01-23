@@ -9,12 +9,31 @@ var ArticleSchema = new Schema({
   // `title` is required and of type String
   title: {
     type: String,
-    required: true
+    required: true,
+    unique: true,
+    dropDups: true
   },
   // `link` is required and of type String
   link: {
     type: String,
-    required: true
+    required: true,
+    unique: true
+  },
+  image: {
+    type: String,
+    required: false
+  },
+  summary: {
+    type: String,
+    default: "No Summary Available"
+  },
+  saved: {
+    type: Boolean,
+    default: false
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   },
   // `note` is an object that stores a Note id
   // The ref property links the ObjectId to the Note model
