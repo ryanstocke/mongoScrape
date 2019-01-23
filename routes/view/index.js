@@ -1,5 +1,5 @@
-var router = require("express").Router();
-var db = requires("../../models");
+const router = require("express").Router();
+const db = require("../../models");
 
 router.get("/", function(req, res){
     db.Article

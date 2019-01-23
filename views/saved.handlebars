@@ -3,7 +3,7 @@
     {{#each articles}}
     <li data-article-id="_id">
         <div><a href={{link}} target="_blank">{{title}}</a></div>
-        {{if note}}
+        {{#if note}}
         <div class="note" data-note-id={{note._id}}>Notes: {{note.text}}</div>
         <button class="editNote">Edit Note</button>
         <form class="editForm">
