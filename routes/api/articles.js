@@ -9,7 +9,7 @@ router.get("/scrape", articleController.scrape);
 router.get("/all", articleController.all);
 // /api/articles/
 router.get("/:id", articleController.findOne);
-router.get("/:id", articleController.update);
-router.get("/:id", articleController.deleteOne);
+router.put("/:id", articleController.update);
+router.delete("/:id", articleController.deleteOne);
 
 module.exports = router;

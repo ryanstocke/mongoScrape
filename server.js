@@ -1,20 +1,22 @@
-var express = require("express");
-var logger = require("morgan");
-var mongoose = require("mongoose");
-
+const express = require("express");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const exphbs = require("express-handlebars");
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
-var axios = require("axios");
-var cheerio = require("cheerio");
 
-// Require all models
-var db = require("./models");
+const port = process.env.PORT || 8080;
+
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 // Initialize Express
-var app = express();
+const app = express();
 
-// Configure middleware
+// Require our routes
+const routes = require("./routes")
+
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
@@ -24,15 +26,19 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-// Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
-
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// Configure middleware
+app.use(routes);
+
+
+// Connect to the Mongo DB
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraperdb"
+mongoose.connect(MONGODB_URI);
+
 // Launch App
-var port = process.env.PORT || 8080;
 app.listen(port, function(){
-  console.log('Running on port: ' + port);
+  console.log("Listening on port: " + port);
 });

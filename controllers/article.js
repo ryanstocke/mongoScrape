@@ -52,19 +52,14 @@ module.exports = {
                 res.json(article);
             });
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
+    deleteOne: function(req, res) {
+        db.Article
+        .deleteOne({
+            _id: req.params.id
+        }).then(function(article){
+            res.json(article);
+        });
+    }
 
 
 

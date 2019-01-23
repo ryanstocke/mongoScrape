@@ -30,29 +30,15 @@ module.exports = {
             .then(function(note){
                 res.json(note);
             });
-    },
-    delete: function(req, res) {
-        db.Note
-            .delete({ text: req.body.text })
-            .then(function(note){
-                return db.Article.findOneAndUpdate({ _id: req.body.articleId }, )
-                res.json(notes);
-            });
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+    ,delete: function(req, res) {
+        db.Article
+        .delete({
+            _id: req.params.id
+        }).then(function(note){
+            res.json(note);
+        });
+    }
 
 
 
