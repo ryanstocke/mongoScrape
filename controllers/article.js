@@ -21,7 +21,7 @@ module.exports = {
                 const article = {};
                 article.title = $(element).text();
                 article.link = $(element).children().attr("href");
-                
+
                 db.Article
                     .create(article);
             });
