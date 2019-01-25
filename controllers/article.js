@@ -25,9 +25,6 @@ module.exports = {
                 db.Article.create(article);
                 console.log(article);
             })
-                .catch(function (err) {
-                    console.log(err);
-                });
         });
         res.send("Scrape completed");
     },
