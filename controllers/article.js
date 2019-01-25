@@ -19,12 +19,15 @@ module.exports = {
 
             $("p.title").each(function (i, element) {
                 const article = {};
-                article.title = $(element).text();
-                article.link = $(element).children().attr("href");
+                article.title = $(element).children("a").text();
+                article.link = $(element).children("a").attr("href");
 
-                db.Article
-                    .create(article);
-            });
+                db.Article.create(article);
+                console.log(article);
+            })
+                .catch(function (err) {
+                    console.log(err);
+                });
         });
         res.send("Scrape completed");
     },
@@ -44,21 +47,21 @@ module.exports = {
             });
 
     },
-    update: function(req, res) {
+    update: function (req, res) {
         console.log("req.body", req.body);
         db.Article
             .findOneAndUpdate({ _id: req.params.id }, req.body)
-            .then(function(article){
+            .then(function (article) {
                 res.json(article);
             });
     },
-    deleteOne: function(req, res) {
+    deleteOne: function (req, res) {
         db.Article
-        .deleteOne({
-            _id: req.params.id
-        }).then(function(article){
-            res.json(article);
-        });
+            .deleteOne({
+                _id: req.params.id
+            }).then(function (article) {
+                res.json(article);
+            });
     }
 
 

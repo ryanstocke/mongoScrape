@@ -4,7 +4,9 @@ $(".saveArticle").on("click", function () {
   $.ajax({
     method: "PUT",
     url: `/api/articles/${id}`,
-    data: { saved: true }
+    data: { 
+      saved: true 
+    }
   }).then(function (response) {
     window.location.assign("/saved");
   });
