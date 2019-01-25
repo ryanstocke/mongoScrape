@@ -1,6 +1,6 @@
 $(".saveArticle").on("click", function () {
-  const id = $(this).parents("li").data("article-id");
-
+  let id = $(this).parents("li").data("article-id");
+  console.log(id);
   $.ajax({
     method: "PUT",
     url: `/api/articles/${id}`,
@@ -8,7 +8,7 @@ $(".saveArticle").on("click", function () {
       saved: true 
     }
   }).then(function (response) {
-    window.location.assign("/saved");
+    location.reload();
   });
 });
 

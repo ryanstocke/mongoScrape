@@ -16,9 +16,10 @@ module.exports = {
     scrape: function (req, res) {
         axios.get("https://old.reddit.com/r/pathofexile/").then(function (response) {
             const $ = cheerio.load(response.data);
-
+            
             $("p.title").each(function (i, element) {
                 const article = {};
+                article.saved = false;
                 article.title = $(element).children("a").text();
                 article.link = $(element).children("a").attr("href");
 
@@ -37,7 +38,7 @@ module.exports = {
     },
     findOne: function (req, res) {
         db.Article
-            .findById(req.params.id)
+            .findById(req.params._id)
             .populate("note")
             .then(function (article) {
                 res.json(article);
@@ -55,7 +56,7 @@ module.exports = {
     deleteOne: function (req, res) {
         db.Article
             .deleteOne({
-                _id: req.params.id
+                _id: req.params._id
             }).then(function (article) {
                 res.json(article);
             });

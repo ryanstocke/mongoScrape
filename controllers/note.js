@@ -10,7 +10,7 @@ module.exports = {
     },
     findOne: function(req, res) {
         db.Note
-            .findbyId(req.params.id)
+            .findbyId(req.params._id)
             .then(function(note){
                 res.json(note);
             });
@@ -19,14 +19,18 @@ module.exports = {
         db.Note
             .create({ text: req.body.text })
             .then(function(note){
-                return db.Article.findOneAndUpdate({ _id: req.body.articleId }, )
-                res.json(note);
-            });
+                return db.Article.findOneAndUpdate({ _id: req.body.articleId }, { $set: { note: note._id}}, { new: true});
+                
+            })
+            .then(function(article){
+                res.json(article)
+            })
+
     },
     update: function(req, res) {
         console.log("req.body", req.body);
         db.Note
-            .findOneAndUpdate({ _id: req.params.id }, req.body)
+            .findOneAndUpdate({ _id: req.params._id }, req.body)
             .then(function(note){
                 res.json(note);
             });
@@ -34,8 +38,9 @@ module.exports = {
     ,delete: function(req, res) {
         db.Article
         .delete({
-            _id: req.params.id
+            _id: req.params._id
         }).then(function(note){
+            console.log(note);
             res.json(note);
         });
     }
