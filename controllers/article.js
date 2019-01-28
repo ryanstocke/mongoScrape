@@ -46,7 +46,7 @@ module.exports = {
 
     },
     update: function (req, res) {
-        console.log("req.body", req.body);
+        console.log("req.body save article id: ", req.body);
         db.Article
             .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(function (article) {
@@ -54,9 +54,10 @@ module.exports = {
             });
     },
     deleteOne: function (req, res) {
+        console.log("req.body delete article test: ", req.params.id);
         db.Article
             .deleteOne({
-                _id: req.params._id
+                _id: req.params.id
             }).then(function (article) {
                 res.json(article);
             });

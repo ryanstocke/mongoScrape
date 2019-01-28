@@ -30,15 +30,16 @@ module.exports = {
     update: function(req, res) {
         console.log("req.body", req.body);
         db.Note
-            .findOneAndUpdate({ _id: req.params._id }, req.body)
+            .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(function(note){
                 res.json(note);
             });
-    }
-    ,delete: function(req, res) {
+    },
+    delete: function(req, res) {
+        console.log("Note deleted: ", req.body);
         db.Article
         .delete({
-            _id: req.params._id
+            _id: req.params.id
         }).then(function(note){
             console.log(note);
             res.json(note);

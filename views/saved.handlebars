@@ -1,15 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="/">Mongo Scraper</a>
-  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
-    aria-label="Toggle navigation">
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <div class="collapse navbar-collapse" id="navbarColor01">
+  <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
       <li class="nav-item">
         <a class="nav-link" href="/saved">Saved Articles
-        <span class="sr-only">(current)</span></a>
+          <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a href="/api/articles/scrape" class="btn btn-danger scrape-new">SCRAPE NEW ARTICLES!</a>
@@ -22,8 +22,8 @@
       </li>
     </ul>
   </div>
-  </nav>
-  <div class="jumbotron text-center">
+</nav>
+<div class="jumbotron text-center">
   <div class="overlay">
   </div>
   <div class="background-image">
@@ -33,30 +33,28 @@
     <p>Your Saved r/PathOfExile Articles</p>
   </div>
 </div>
-<div class="container-fluid article-container"></div>
 
-
-<div class="container-fluid article-container"></div>
+{{!-- <div class="container-fluid article-container"></div> --}}
 <ul class="saved">
-    {{#each articles}}
-    <div data-article-id="_id" class="card">
+  {{#each articles}}
+  <div data-article-id={{_id}} class="card">
 
-        <div><a href={{link}} target="_blank">{{title}}</a></div>
-        {{#if note}}
-        <div class="note" data-note-id={{note._id}}>Notes: {{note.text}}</div>
-        <button class="editNote">Edit Note</button>
-        <form class="editForm">
-            <input class="text" placeholder="Your note here">
-            <button type="submit">Submit Note</button>
-        </form>
-        {{/if}}
-        {{#unless note}}
-        <button class="addNote">Add Note</button>
-        <form class="addForm">
-            <input class="text" placeholder="Your note here">
-            <button type="submit">Submit Note</button>
-        </form>
-        {{/unless}}
-    </div>
-    {{/each}}
+    <div><a href={{link}} target="_blank">{{title}}</a></div>
+    {{#if note}}
+    <div class="notes" data-note-id={{note._id}}>Notes: {{note.text}}</div>
+    <button class="editNote">Edit Note</button>
+    <form class="editForm">
+      <input class="text" placeholder="Your note here">
+      <button type="submit">Submit Note</button>
+    </form>
+    {{/if}}
+    {{#unless note}}
+    <form class="addForm">
+      <div class="note" data-note-id={{note._id}}>Notes: {{note.text}}</div>
+      <input class="text" placeholder="Your note here">
+      <button type="submit">Submit Note</button>
+    </form>
+    {{/unless}}
+  </div>
+  {{/each}}
 </ul>
