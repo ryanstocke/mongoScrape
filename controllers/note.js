@@ -37,7 +37,7 @@ module.exports = {
     },
     delete: function(req, res) {
         console.log("Note deleted: ", req.body);
-        db.Article
+        db.Note
         .delete({
             _id: req.params.id
         }).then(function(note){

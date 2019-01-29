@@ -6,23 +6,34 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item active"><span class="sr-only">(current)</span></li>
       <li class="nav-item">
-        <a class="nav-link" href="/saved">Saved Articles
-          <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a href="/api/articles/scrape" class="btn btn-danger scrape-new">SCRAPE NEW ARTICLES!</a>
-      </li>
-      <li class="nav-item">
-        <a href="/api/articles/clear" class="btn btn-danger clear">CLEAR ARTICLES!</a>
-      </li>
-      <li class="nav-item">
-        <a href="api/articles/all" class="btn btn-danger clear">All ARTICLES!</a>
-      </li>
+        <a class="nav-link" href="/saved">Saved Articles<span class="sr-only">(current)</span></a> </li>
+      <li class="li-btn clear-btn btn btn-danger">Clear Articles!</a></li>
     </ul>
   </div>
 </nav>
+
+<div class="modal add-modal">
+  <div class="modal-content">
+    <span onclick="location.href='/saved'" class="close">&times;</span>
+    <form class="add-form">
+      <input class="text" placeholder="Your note here" /><br>
+      <button type="submit" class="add-note-btn btn-success">Submit Note</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal edit-modal">
+    <div class="modal-content">
+        <span onclick="location.href='/saved'" class="close">&times;</span>
+        <form class="edit-form">
+            <input class="text" placeholder="Your note here" /><br>
+            <button type="submit" class="edit-note-btn btn-success">Submit Note</button>
+        </form>   
+    </div>
+</div>
+
 <div class="jumbotron text-center">
   <div class="overlay">
   </div>
@@ -30,31 +41,51 @@
   </div>
   <div class="caption">
     <h1>Mongo Scraper</h1>
-    <p>Your Saved r/PathOfExile Articles</p>
+    <p>R/PathOfExile</p>
   </div>
 </div>
 
-{{!-- <div class="container-fluid article-container"></div> --}}
-<ul class="saved">
-  {{#each articles}}
-  <div data-article-id={{_id}} class="card">
 
-    <div><a href={{link}} target="_blank">{{title}}</a></div>
-    {{#if note}}
-    <div class="notes" data-note-id={{note._id}}>Notes: {{note.text}}</div>
-    <button class="editNote">Edit Note</button>
-    <form class="editForm">
-      <input class="text" placeholder="Your note here">
-      <button type="submit">Submit Note</button>
-    </form>
+<div class="container-fluid article-container">
+  <ul class="saved">
+    {{#if articles}}
+    {{#each articles}}
+    <li class="article-container container-fluid card" data-article-id={{_id}} class="card">
+      {{#if note}}
+      <div class="a-content card-header">
+        <div class="a-title"><a class="a-title" target="_blank" href={{link}}>{{title}}</a></div>
+        <hr>
+        <div class="note a-summary" data-note-id={{note._id}}>Note: {{note.text}}</div>
+      </div>
+      <br>
+      <div class="btn-div">
+        <button class="delete-note">Delete Note</button><br>
+        <button class="edit-note">Edit Note</button><br>
+        <button class="delete-article">Remove Article</button>
+      </div>
+      {{/if}}
+      {{#unless note}}
+      <div class="a-content">
+        <div class="a-title"><a class="a-title" target="_blank" href={{link}}>{{title}}</a></div>
+      </div>
+      <div class="btn-div">
+        <button class="add-note">Add Note</button>
+        <button class="delete-article">Remove Article</button>
+      </div>
+      {{/unless}}
+    </li>
+    {{/each}}
     {{/if}}
-    {{#unless note}}
-    <form class="addForm">
-      <div class="note" data-note-id={{note._id}}>Notes: {{note.text}}</div>
-      <input class="text" placeholder="Your note here">
-      <button type="submit">Submit Note</button>
-    </form>
+    {{#unless articles}}
+    <li class="article">
+      Save some of your favorite articles in order to see them on the Saved Articles page.
+    </li>
     {{/unless}}
+  </ul>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>Mongo Scraper R/PathOfExile</p>
   </div>
-  {{/each}}
-</ul>
+</footer>
