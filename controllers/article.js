@@ -27,7 +27,7 @@ module.exports = {
                 console.log(article);
             })
         });
-        res.send("Scrape completed");
+        res.send("Scrape completed!");
     },
     findAll: function (req, res) {
         db.Article

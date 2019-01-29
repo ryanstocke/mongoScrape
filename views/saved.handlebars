@@ -50,7 +50,7 @@
   <ul class="saved">
     {{#if articles}}
     {{#each articles}}
-    <li class="article-container container-fluid card" data-article-id={{_id}} class="card">
+    <li class="article-container container-fluid card" data-article-id={{_id}}>
       {{#if note}}
       <div class="a-content card-header">
         <div class="a-title"><a class="a-title" target="_blank" href={{link}}>{{title}}</a></div>
@@ -58,7 +58,7 @@
         <div class="note a-summary" data-note-id={{note._id}}>Note: {{note.text}}</div>
       </div>
       <br>
-      <div class="btn-div">
+      <div class="btn-div btn-block">
         <button class="delete-note">Delete Note</button><br>
         <button class="edit-note">Edit Note</button><br>
         <button class="delete-article">Remove Article</button>
