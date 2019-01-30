@@ -5,7 +5,8 @@ html {
   
   body {
     margin-bottom: 80px;
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
+    background: #333;
   }
   
   .card a:not([href]):not([tabindex]).scrape-new {
@@ -14,11 +15,14 @@ html {
   
   .footer {
     position: absolute;
+    left: 0;
     bottom: 0;
     width: 100%;
     height: 80px;
     color: white;
-    background-color: #2196f3;
+    font-family: "Cormorant SC";
+    background: linear-gradient(#333, black);
+    opacity: 0.7;
   }
   
   
@@ -45,7 +49,7 @@ html {
   .jumbotron .background-image {
     height: 100%;
     
-    background-size: cover;
+    
   }
   
   .jumbotron .caption {
@@ -69,16 +73,17 @@ html {
     font-size: 30px;
   }
   
-  /* .article-container {
+  .article-container {
     padding-bottom: 25px;
-    padding-right: 25px;
-  } */
+    padding-right: 35px;
+    background-color: #333;
+  }
   .btn-div{
     padding-bottom: 10px;
   }
   .card {
     border-radius: 0;
-    box-shadow: 3px 3px 20px lightslategrey;
+    box-shadow: 3px 3px 20px rgb(248, 248, 248);
     margin: 20px 0;
   }
   
@@ -87,11 +92,13 @@ html {
     position: relative;
     padding-top: 30px;
     padding-bottom: 30px;
-  }
-  
-  .card .card-header h3 {
     color: white;
   }
+  /* navbar-toggler-icon
+  .card .card-header h3 {
+    color: white;
+    
+  } */
   
 .card .card-header .btn {
     position: absolute;
@@ -104,7 +111,7 @@ html {
   }
   
   .card .card-body {
-    font-size: 16px;
+    font-size: 20px;
   }
   
   .card .card-header .article-link {
@@ -128,8 +135,10 @@ html {
   .navbar {
     background-attachment: fixed;
     background-size: contain;
+    background-repeat: no-repeat;
     background-image: url("./images/poeBanner.png");
     list-style-type: none;
+    min-height: 0px;
     margin: 0;
     padding: 0;
    
@@ -140,13 +149,22 @@ html {
     margin-bottom: 0;
 }
   .li-btn {
-    /* background: #1955a5; */
-    /* border: 1px solid #000000; */
+    border: 1px solid #000000;
     padding: 10px;
     margin-left: 20px;
     border-radius: 4px;
     font-weight: bold;
     cursor: pointer;
+    
+}
+
+.navbar-nav > li > a.scrape-btn,
+.navbar-nav > li > a.clear-btn {
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: 800;
+  color: white;
 }
   .navbar-nav > li > a.scrape-btn:hover,
   .navbar-nav > li > a.clear-btn:hover {
@@ -156,16 +174,31 @@ html {
   .navbar-nav > li > a.scrape-btn:active {
     background: #039116;
   }
+  .navbar-brand{
+    color: white;
+  }
   .li-nav {
     display: inline;
     line-height: 80px;
     padding-left: 20px;
 }
   .scrape-btn {
-    cursor: pointer;
- 
+  cursor: pointer;
+  text-align: center;
+  max-height: 50px;
   }
-  
+  .clear-btn {
+  cursor: pointer;
+  text-align: center;
+  right: 20px;
+
+  }
+  .save-btn{
+  cursor: pointer;
+  text-align: center;
+  right: 20px;
+  }
+
   .m-top-80 {
     margin-top: 80px;
   }
@@ -228,6 +261,15 @@ input {
   
 }
 
-/* .btn-success {
-  padding-top: 5px;
-} */
+
+.a-title {
+  color:red;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.saneExile{
+  padding-top: 1px;
+  text-align: center;
+}
+

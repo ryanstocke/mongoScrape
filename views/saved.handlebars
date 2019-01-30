@@ -7,8 +7,8 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active"><span class="sr-only">(current)</span></li>
-      <li class="nav-item">
-        <a class="nav-link" href="/saved">Saved Articles<span class="sr-only">(current)</span></a> </li>
+      {{!-- <li class="nav-item"> --}}
+       <a class="li-btn nav-item save-btn btn-info" href="/saved">Saved Articles<span class="sr-only">(current)</span></a> </li>
       <li class="li-btn clear-btn btn btn-danger">Clear Articles!</a></li>
     </ul>
   </div>
@@ -58,7 +58,7 @@
         <div class="note a-summary" data-note-id={{note._id}}>Note: {{note.text}}</div>
       </div>
       <br>
-      <div class="btn-div btn-block">
+      <div class="btn-div btn-group">
         <button class="delete-note">Delete Note</button><br>
         <button class="edit-note">Edit Note</button><br>
         <button class="delete-article">Remove Article</button>
@@ -77,8 +77,8 @@
     {{/each}}
     {{/if}}
     {{#unless articles}}
-    <li class="article">
-      Save some of your favorite articles in order to see them on the Saved Articles page.
+    <li class="article-container container-fluid card a-title saneExile">
+      Still sane exile? Save some of your favorite articles in order to see them on the Saved Articles page.
     </li>
     {{/unless}}
   </ul>

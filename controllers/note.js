@@ -10,7 +10,7 @@ module.exports = {
     },
     findOne: function(req, res) {
         db.Note
-            .findbyId(req.params._id)
+            .findbyId(req.params.id)
             .then(function(note){
                 res.json(note);
             });
@@ -36,9 +36,9 @@ module.exports = {
             });
     },
     delete: function(req, res) {
-        console.log("Note deleted: ", req.body);
+        console.log("Note deleted: ", req.params.id);
         db.Note
-        .delete({
+        .deleteOne({
             _id: req.params.id
         }).then(function(note){
             console.log(note);
